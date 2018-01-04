@@ -1,0 +1,101 @@
+\documentclass[aspectratio=1610,svgnames]{beamer}
+
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{selinput}
+\SelectInputMappings{%
+   adieresis={ä},
+   germandbls={ß}
+   }
+\usepackage{csquotes}
+
+\usepackage{hyperref}
+
+\usetheme{PaloAlto}  %% Themenwahl
+
+\setbeamercovered{transparent}
+%\setbeamertemplate{footline}[frame number]
+\usecolortheme{spruce}		% grün
+\usecolortheme[named=MSUgreen]{structure}
+\newcommand{\hshblogo}{\includegraphics[width=1.3cm]{space-logo}}
+\newcommand{\divider}[1]{\begin{frame} %
+\begin{alertblock}{} %
+\centering\usebeamerfont{section title}#1 %
+\end{alertblock} %
+\end{frame}}
+ 
+\newcommand{\code}[1]{\texttt{#1}}
+
+\title{Einführung in Regular Expressions}
+\author{Thomas Helmke}
+\date{00.00.2018}
+\logo{\includegraphics[width=1.1cm]{space-logo}}
+ 
+\begin{document}
+\maketitle
+\frame{\tableofcontents}
+
+\section{Einleitung}
+\divider{\insertsection}
+\begin{frame}%[<+->] %%Eine Folie
+	\frametitle{What sorcery is this?} %%Folientitel
+	\begin{itemize}
+		\item .
+        \item .
+		\item .
+	\end{itemize}
+\end{frame}
+\begin{frame}[<+->] %%Eine Folie
+	\frametitle{regex} %%Folientitel
+	\begin{itemize}
+		\item .
+        \item .
+		\item .
+		\item .
+	\end{itemize}
+\end{frame}
+
+\section{Grundlagen}
+\divider{\insertsection}
+\subsection{Zeichen}
+\divider{\insertsubsection}
+\begin{frame}[<+->]
+    \frametitle{Zeichen}
+    \begin{itemize}
+        \item .
+        \item .
+        \item .
+    \end{itemize}
+\end{frame} 
+
+
+\section{Fortgeschrittene Techniken}
+\divider{\insertsection}
+\subsection{Variablen}
+\divider{\insertsubsection}
+\begin{frame}[<+->]
+    \frametitle{Variablen I}
+    \begin{itemize}
+        \item Werte können in Variablen gespeichert werden
+        \item Variablen können mathematisch verrechnet werden
+    \end{itemize}
+    \uncover<+->{%
+    \code{xsize = 3.5;\newline%
+        ysize = xsize;\newline%
+        zsize = 0.5*xsize;}}
+\end{frame}
+
+
+
+\section{Weitere Infos}
+\divider{\insertsection}
+\begin{frame}[fragile]
+    \frametitle{Weitere Infos}
+    \begin{itemize}
+        \item \url{https://github.com/Syralist/hshb-pres-regex}
+        \item \url{https://regex101.com/}
+        \item \url{https://regexr.com/}
+    \end{itemize}
+\end{frame}
+\end{document}
