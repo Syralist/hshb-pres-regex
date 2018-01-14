@@ -38,12 +38,16 @@
 
 \section{Einleitung}
 \divider{\insertsection}
-\begin{frame}%[<+->] %%Eine Folie
+\begin{frame}[fragile]%[<+->] %%Eine Folie
 	\frametitle{What sorcery is this?} %%Folientitel
-	\begin{itemize}
-		\item .
-        \item .
-		\item .
+	\begin{itemize}[<+->]
+		\item \verb|^([\w-]+(?:\.[\w-]+)*)|\\
+			\verb|@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$|\only<4>{\footnote{Emailadresse}}
+        \item \verb@^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.@\\
+        	\verb@(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.@\\
+        	\verb@(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.@\\
+        	\verb@(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$@\only<4>{\footnote{IPv4 Adresse}}
+		\item \verb|^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$|\only<4>{\footnote{Passwort, min. 6 Zeichen, 1 Gross, 1 Klein, 1 Ziffer}}
 	\end{itemize}
 \end{frame}
 \begin{frame}[<+->] %%Eine Folie
