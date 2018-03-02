@@ -27,7 +27,7 @@
  
 \newcommand{\code}[1]{\texttt{#1}}
 
-\title{Einführung in Regular Expressions}
+\title{Keine Angst vor Regular Expressions}
 \author{Thomas Helmke}
 \date{00.00.2018}
 \logo{\includegraphics[width=1.1cm]{space-logo}}
@@ -50,28 +50,45 @@
 		\item \verb|^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$|\only<4>{\footnote{Passwort, min. 6 Zeichen, 1 Gross, 1 Klein, 1 Ziffer}}
 	\end{itemize}
 \end{frame}
-\begin{frame}[<+->] %%Eine Folie
-	\frametitle{regex} %%Folientitel
-	\begin{itemize}
-		\item .
-        \item .
-		\item .
-		\item .
-	\end{itemize}
+\begin{frame}%[<+->] %%Eine Folie
+    \frametitle{Definition} %%Folientitel
+    \begin{exampleblock}{}
+    \begin{quote}
+        Ein regulärer Ausdruck (englisch regular expression, Abkürzung RegExp oder Regex) 
+        ist in der theoretischen Informatik eine Zeichenkette, die der Beschreibung von Mengen 
+        von Zeichenketten mit Hilfe bestimmter syntaktischer Regeln dient.\\
+        \hspace*\fill{\small--- Wikipedia\footnotemark}
+    \end{quote}
+    \end{exampleblock}
+    \footnotetext{\url{https://de.wikipedia.org/wiki/Regex}}
 \end{frame}
 
-\section{Grundlagen}
+\section{Beispiele}
 \divider{\insertsection}
-\subsection{Zeichen}
+\subsection{Beispiel 1: Längenangabe im Logfile}
 \divider{\insertsubsection}
 \begin{frame}[<+->]
-    \frametitle{Zeichen}
-    \begin{itemize}
-        \item .
-        \item .
-        \item .
-    \end{itemize}
+    \frametitle{Auszug aus Logfile}
+    \begin{exampleblock}{}
+        \texttt
+        21 . 3. 2017  15 : 26 : 32\\
+        Abweichung beträgt: {\color<2>{red}-0.23} m
+    \end{exampleblock}
 \end{frame} 
+\begin{frame}[fragile]
+    \frametitle{Auszug aus Logfile}
+    \begin{itemize}[<+->]
+        \item Livedemo auf \url{https://www.regex101.com}
+        \item Lösungsansatz: \verb|[-]??\d+[.]\d+|
+        \item vollständige Regex: \verb|Abweichung beträgt: ([-]??\d+[.]\d+) m|
+    \end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Auszug aus Logfile}
+    \begin{exampleblock}{Python-Umsetzung}
+        python code
+    \end{exampleblock}
+\end{frame}
 
 
 \section{Fortgeschrittene Techniken}
