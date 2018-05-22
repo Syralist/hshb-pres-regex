@@ -16,7 +16,7 @@
 
 \setbeamercovered{transparent}
 %\setbeamertemplate{footline}[frame number]
-\usecolortheme{spruce}		% grün
+\usecolortheme{spruce}        % grün
 \usecolortheme[named=MSUgreen]{structure}
 \newcommand{\hshblogo}{\includegraphics[width=1.3cm]{space-logo}}
 \newcommand{\divider}[1]{\begin{frame} %
@@ -26,6 +26,8 @@
 \end{frame}}
  
 \newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\regex}[1]{\texttt{/#1/}}
+\newcommand{\bs}{\textbackslash}
 
 \title{Einführung in Regular Expressions}
 \author{Thomas Helmke}
@@ -39,37 +41,66 @@
 \section{Einleitung}
 \divider{\insertsection}
 \begin{frame}[fragile]%[<+->] %%Eine Folie
-	\frametitle{What sorcery is this?} %%Folientitel
-	\begin{itemize}[<+->]
-		\item \verb|^([\w-]+(?:\.[\w-]+)*)|\\
-			\verb|@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$|\only<4>{\footnote{Emailadresse}}
+    \frametitle{What sorcery is this?} %%Folientitel
+    \begin{itemize}[<+->]
+        \item \verb|^([\w-]+(?:\.[\w-]+)*)|\\
+            \verb|@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$|\only<4>{\footnote{Emailadresse}}
         \item \verb@^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.@\\
-        	\verb@(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.@\\
-        	\verb@(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.@\\
-        	\verb@(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$@\only<4>{\footnote{IPv4 Adresse}}
-		\item \verb|^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$|\only<4>{\footnote{Passwort, min. 6 Zeichen, 1 Gross, 1 Klein, 1 Ziffer}}
-	\end{itemize}
+            \verb@(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.@\\
+            \verb@(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.@\\
+            \verb@(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$@\only<4>{\footnote{IPv4 Adresse}}
+        \item \verb|^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$|\only<4>{\footnote{Passwort, min. 6 Zeichen, 1 Gross, 1 Klein, 1 Ziffer}}
+    \end{itemize}
 \end{frame}
 \begin{frame}[<+->] %%Eine Folie
-	\frametitle{regex} %%Folientitel
-	\begin{itemize}
-		\item .
-        \item .
-		\item .
-		\item .
-	\end{itemize}
+    \frametitle{Theoretischer Hintergrund} %%Folientitel
+    \begin{exampleblock}{Definition von Wikipedia}
+        Ein regulärer Ausdruck ist in der theoretischen Informatik eine Zeichenkette, 
+        die der Beschreibung von Mengen von Zeichenketten mit Hilfe bestimmter syntaktischer Regeln dient.
+    \end{exampleblock}
 \end{frame}
 
 \section{Grundlagen}
 \divider{\insertsection}
-\subsection{Zeichen}
+\subsection{Zeichenauswahl}
 \divider{\insertsubsection}
 \begin{frame}[<+->]
-    \frametitle{Zeichen}
+    \frametitle{Ein oder mehr Zeichen}
     \begin{itemize}
-        \item .
-        \item .
-        \item .
+        \item \regex{thomas} findet \enquote{thomas} als wort
+        \item \regex{[thomas]} findet \enquote{t} oder \enquote{h} oder \enquote{o} oder \enquote{m} oder \enquote{a} oder \enquote{s}
+        \item \regex{[a-z]} findet einen beliebigen Kleinbuchstaben
+        \item \regex{[0-9]} findet eine beliebige Zahl
+    \end{itemize}
+\end{frame} 
+\begin{frame}[<+->]
+    \frametitle{Vordefinierte Zeichengruppen}
+    \begin{itemize}
+        \item \regex{\bs d} findet eine beliebige Zahl (digit)
+        \item \regex{\bs w} findet Zahlen, Buchstaben und Unterstriche (word)
+        \item \regex{\bs s} findet Leerzeichen, Tabs, Zeilenumbruch etc. (whitespace)
+        \item Großbuchstabe funktioniert als Negierung
+    \end{itemize}
+\end{frame} 
+\subsection{Zeichen zählen}
+\divider{\insertsubsection}
+\begin{frame}[<+->]
+    \frametitle{Quantifier}
+    \begin{itemize}
+        \item \regex{a?} null- oder einmal
+        \item \regex{a+} mindestens einmal
+        \item \regex{a*} beliebig oft
+        \item \regex{a\{n\}} genau n-mal
+        \item \regex{a\{n,\}} mindestens n-mal
+        \item \regex{a\{n,m\}} mindestens n-mal, maximal m-mal
+        \item \regex{a\{0,m\}} maximal m-mal
+    \end{itemize}
+\end{frame} 
+\begin{frame}[<+->]
+    \frametitle{Lazy or Greedy?}
+    \begin{itemize}
+        \item \regex{a*} Greedy Quantifier: findet so viele Zeichen wie möglich
+        \item \regex{a*?} Lazy Quantifier: findet so wenig Zeichen wie möglich
     \end{itemize}
 \end{frame} 
 
