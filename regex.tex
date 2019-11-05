@@ -1,14 +1,18 @@
 \documentclass[aspectratio=1610,svgnames]{beamer}
 
-\usepackage{lmodern}
-\usepackage[T1]{fontenc}
-\usepackage[ngerman]{babel}
-\usepackage{selinput}
-\SelectInputMappings{%
-   adieresis={ä},
-   germandbls={ß}
-   }
-\usepackage{csquotes}
+% \usepackage{lmodern}
+% \usepackage[T1]{fontenc}
+% \usepackage[ngerman]{babel}
+% \usepackage{selinput}
+% \SelectInputMappings{%
+%    adieresis={ä},
+%    germandbls={ß}
+%    }
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\usepackage{polyglossia}
+\setdefaultlanguage{german}
+\usepackage[style=german]{csquotes}
 
 \usepackage{hyperref}
 
